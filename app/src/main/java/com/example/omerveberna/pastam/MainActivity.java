@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -36,12 +37,18 @@ public class MainActivity extends AppCompatActivity {
         buttonGiris=(Button)findViewById(R.id.buttonGiris);
         buttonKaydol=(Button)findViewById(R.id.buttonKaydol) ;
 
+
+
+
         buttonKaydol.setOnClickListener(new View.OnClickListener() {
+
+
+
             @Override
             public void onClick(View v) {
-
                 String email = etUyeEmail.getText().toString();
                 String parola = etUyeParola.getText().toString();
+
 
 
                 if(TextUtils.isEmpty(email)){
@@ -71,6 +78,27 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
 
+            }
+        });
+
+        buttonGiris.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                String email = etUyeEmail.getText().toString();
+                String parola = etUyeParola.getText().toString();
+                auth.signInWithEmailAndPassword(email,parola).addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            startActivity(new Intent(MainActivity.this,SiparisActivity.class));
+                        }
+                        else {
+                            Log.e("Giriş Hatası",task.getException().getMessage());
+                        }
+
+                    }
+                });
             }
         });
 
