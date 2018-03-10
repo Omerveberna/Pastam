@@ -1,3 +1,4 @@
+//burayı denemek için yazdım
 package com.example.omerveberna.pastam;
 
 import android.content.Intent;
