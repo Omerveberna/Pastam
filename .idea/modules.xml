@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Pastam.iml" filepath="$PROJECT_DIR$/Pastam.iml" />
+      <module fileurl="file://D:\AndroidProjects\PastamGithubden\Pastam.iml" filepath="D:\AndroidProjects\PastamGithubden\Pastam.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PastamGithubden.iml" filepath="$PROJECT_DIR$/PastamGithubden.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://D:\AndroidProjects\PastamGithubden\app\app.iml" filepath="D:\AndroidProjects\PastamGithubden\app\app.iml" />
     </modules>
   </component>
 </project>

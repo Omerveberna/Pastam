@@ -1,4 +1,3 @@
-//GITHUB DENEMEK ICIN YAZDIMMI
 package com.example.omerveberna.pastam;
 
 import android.content.Intent;
