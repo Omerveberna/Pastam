@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1031822986229",
+    "firebase_url": "https://pastam-3e575.firebaseio.com",
+    "project_id": "pastam-3e575",
+    "storage_bucket": "pastam-3e575.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1031822986229:android:34334be5f9e68bec",
+        "android_client_info": {
+          "package_name": "com.example.omerveberna.pastam"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1031822986229-tjd8tgmadklh8b8ckenh9sefrjujb6hq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.omerveberna.pastam",
+            "certificate_hash": "b6f6dc74cabb161c54daa9a8c88664a24bf40446"
+          }
+        },
+        {
+          "client_id": "1031822986229-ailbmfn5uk3if783iujh6naot28ed7ub.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC5B7lbaETwXZAO0w9SMeD_NJ3iLs8birA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1031822986229-ailbmfn5uk3if783iujh6naot28ed7ub.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

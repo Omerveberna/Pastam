@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.omerveberna.pastam.MainActivity">
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/pasta_icon"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"/>
+
+
+    <EditText
+        android:id="@+id/etUyeEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:hint="@string/emailHint"
+        android:inputType="textEmailAddress" />
+
+    <!--<android.support.design.widget.TextInputLayout-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_width="match_parent">-->
+    <EditText
+        android:id="@+id/etUyeParola"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:ems="10"
+        android:hint="@string/parolaHint"
+        android:inputType="textPassword" />
+
+<!--</android.support.design.widget.TextInputLayout>-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/buttonGiris"
+            android:layout_width="140dp"
+            android:layout_height="45dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/colorAccent"
+            android:text="@string/giriş"
+            android:textAllCaps="true"
+            android:textColor="#FFFF" />
+
+        <Button
+            android:id="@+id/buttonKaydol"
+            android:layout_width="140dp"
+            android:layout_height="45dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/colorPrimary"
+            android:text="@string/kaydol"
+            android:textColor="#FFFF" />
+    </LinearLayout>
+
+
+
+</LinearLayout>
