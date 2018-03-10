@@ -1,3 +1,4 @@
+//GITHUB DENEMEK ICIN YAZDIM
 package com.example.omerveberna.pastam;
 
 import android.content.Intent;
@@ -27,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        
+
         auth=FirebaseAuth.getInstance();
 
         etUyeEmail= (EditText)findViewById(R.id.etUyeEmail);
