@@ -26,6 +26,7 @@ public class SiparisActivity extends AppCompatActivity {
     private FirebaseAuth.AuthStateListener authStateListener;
     private FirebaseAuth auth;
     private DatabaseReference databaseReference;
+    private DatabaseReference siparislerReference;
 
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
@@ -64,7 +65,7 @@ public class SiparisActivity extends AppCompatActivity {
 
 
         databaseReference = FirebaseDatabase.getInstance().getReference().child("pastalar");
-        databaseReference = FirebaseDatabase.getInstance().getReference().child("siparişler");
+        siparislerReference = FirebaseDatabase.getInstance().getReference().child("siparişler");
 
 
         auth = FirebaseAuth.getInstance();
@@ -100,13 +101,14 @@ public class SiparisActivity extends AppCompatActivity {
                         Pastalar pastalar= pasta_listesi.get(position);
                         Siparisler siparisler= new Siparisler();
 
-                        siparisler.setKisi(siparisler.getKisi());
-                        siparisler.setIcerik(siparisler.getIcerik());
-                        siparisler.setFiyat(siparisler.getFiyat());
+                        siparisler.setKisi(pastalar.getkisi());
+                        siparisler.setIcerik(pastalar.getIcerik());
+                        siparisler.setFiyat(pastalar.getFiyat());
                         siparisler.setUid(mevcutKisiId);
                         Toast.makeText(getApplicationContext(),position + " " + pastalar.getIcerik(),Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(SiparisActivity.this,TamamlandiActivity.class);
                         startActivity(intent);
+                        siparislerReference.push().setValue(siparisler);
 
                     }
                 });

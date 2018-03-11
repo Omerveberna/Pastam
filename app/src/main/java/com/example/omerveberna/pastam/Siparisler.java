@@ -13,7 +13,7 @@ public class Siparisler {
     private String fiyat;
 
 
-    public Siparisler(String icerik, String kisi, String fiyat, String email) {
+    public Siparisler(String icerik, String kisi, String fiyat, String uid) {
         this.icerik = icerik;
         this.kisi = kisi;
         this.fiyat = fiyat;
@@ -44,9 +44,7 @@ public class Siparisler {
     public void setFiyat(String name) {
         this.fiyat = name;
     }
-    public String getUid() {
-        return uid;
-    }
+
 
     public void setUid(String uid) {
         this.uid = uid;
