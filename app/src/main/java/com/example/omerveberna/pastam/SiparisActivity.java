@@ -105,7 +105,7 @@ public class SiparisActivity extends AppCompatActivity {
                         siparisler.setIcerik(pastalar.getIcerik());
                         siparisler.setFiyat(pastalar.getFiyat());
                         siparisler.setUid(mevcutKisiId);
-                        Toast.makeText(getApplicationContext(),position + " " + pastalar.getIcerik(),Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(getApplicationContext(),position + " " + pastalar.getIcerik(),Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(SiparisActivity.this,TamamlandiActivity.class);
                         startActivity(intent);
                         siparislerReference.push().setValue(siparisler);
