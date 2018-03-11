@@ -18,7 +18,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SiparisActivity"></activity>
+        <activity android:name=".SiparisActivity" />
+        <activity android:name=".TamamlandiActivity"></activity>
     </application>
 
 </manifest>

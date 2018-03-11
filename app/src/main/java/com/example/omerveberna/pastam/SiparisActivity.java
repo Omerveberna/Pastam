@@ -1,5 +1,6 @@
 package com.example.omerveberna.pastam;
 
+import android.content.Intent;
 import android.graphics.ColorSpace;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -30,6 +31,7 @@ public class SiparisActivity extends AppCompatActivity {
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private List<Pastalar> pasta_listesi;
+    private String mevcutKisiId;
 
     @Override
     public void onStart() {
@@ -62,16 +64,19 @@ public class SiparisActivity extends AppCompatActivity {
 
 
         databaseReference = FirebaseDatabase.getInstance().getReference().child("pastalar");
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("siparişler");
+
+
         auth = FirebaseAuth.getInstance();
         authStateListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(FirebaseAuth firebaseAuth) {
                 FirebaseUser oturumAcanUser = firebaseAuth.getCurrentUser();
                 if (oturumAcanUser != null) {
-                    //String mevcutKisiId=oturumAcanUser.getUid();
+                    mevcutKisiId=oturumAcanUser.getUid();
                     String mevcutKisiEmail=oturumAcanUser.getEmail();
 
-                    Toast.makeText(getApplicationContext(),mevcutKisiEmail+" Hoşgeldiniz!",Toast.LENGTH_SHORT).show();
+
                 }
             }
         };
@@ -79,9 +84,10 @@ public class SiparisActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 pasta_listesi = new ArrayList<Pastalar>();
+                Pastalar pastalar;
                 for (DataSnapshot ds: dataSnapshot.getChildren()){
-                    Pastalar pastalar = ds.getValue(Pastalar.class);
-                    Toast.makeText(getApplicationContext(),pastalar.getFiyat()+pastalar.getIcerik()+pastalar.getkisi(),Toast.LENGTH_SHORT).show();
+                    pastalar = ds.getValue(Pastalar.class);
+
                     //Recycler view ile verileri kullanıcıya göster.
 
 
@@ -92,11 +98,19 @@ public class SiparisActivity extends AppCompatActivity {
                     @Override
                     public void onItemClick(View v, int position) {
                         Pastalar pastalar= pasta_listesi.get(position);
-                        Toast.makeText(getApplicationContext(),position + " " + pastalar.getIcerik(),Toast.LENGTH_SHORT).show();
+                        Siparisler siparisler= new Siparisler();
 
+                        siparisler.setKisi(siparisler.getKisi());
+                        siparisler.setIcerik(siparisler.getIcerik());
+                        siparisler.setFiyat(siparisler.getFiyat());
+                        siparisler.setUid(mevcutKisiId);
+                        Toast.makeText(getApplicationContext(),position + " " + pastalar.getIcerik(),Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(SiparisActivity.this,TamamlandiActivity.class);
+                        startActivity(intent);
 
                     }
                 });
+
                 mRecyclerView.setHasFixedSize(true);
                 mRecyclerView.setAdapter(pastalarAdapter);
                 mRecyclerView.setItemAnimator(new DefaultItemAnimator());
