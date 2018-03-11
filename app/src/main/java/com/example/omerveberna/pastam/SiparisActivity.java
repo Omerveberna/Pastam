@@ -1,7 +1,12 @@
 package com.example.omerveberna.pastam;
 
+import android.graphics.ColorSpace;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -13,10 +18,18 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class SiparisActivity extends AppCompatActivity {
     private FirebaseAuth.AuthStateListener authStateListener;
     private FirebaseAuth auth;
+    private DatabaseReference databaseReference;
 
+    private RecyclerView mRecyclerView;
+    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager mLayoutManager;
+    private List<Pastalar> pasta_listesi;
 
     @Override
     public void onStart() {
@@ -38,6 +51,17 @@ public class SiparisActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_siparis);
 
+        mRecyclerView = (RecyclerView)findViewById(R.id.my_recycler_view);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+
+        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        linearLayoutManager.scrollToPosition(0);
+
+        mRecyclerView.setLayoutManager(linearLayoutManager);
+
+
+
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("pastalar");
         auth = FirebaseAuth.getInstance();
         authStateListener = new FirebaseAuth.AuthStateListener() {
             @Override
@@ -51,6 +75,38 @@ public class SiparisActivity extends AppCompatActivity {
                 }
             }
         };
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                pasta_listesi = new ArrayList<Pastalar>();
+                for (DataSnapshot ds: dataSnapshot.getChildren()){
+                    Pastalar pastalar = ds.getValue(Pastalar.class);
+                    Toast.makeText(getApplicationContext(),pastalar.getFiyat()+pastalar.getIcerik()+pastalar.getkisi(),Toast.LENGTH_SHORT).show();
+                    //Recycler view ile verileri kullanıcıya göster.
+
+
+                    pasta_listesi.add(new Pastalar(pastalar.getIcerik(),pastalar.getkisi(),pastalar.getFiyat()));
+                }
+                PastalarAdapter pastalarAdapter = new PastalarAdapter(pasta_listesi, new CustomItemClickListener() {
+
+                    @Override
+                    public void onItemClick(View v, int position) {
+                        Pastalar pastalar= pasta_listesi.get(position);
+                        Toast.makeText(getApplicationContext(),position + " " + pastalar.getIcerik(),Toast.LENGTH_SHORT).show();
+
+
+                    }
+                });
+                mRecyclerView.setHasFixedSize(true);
+                mRecyclerView.setAdapter(pastalarAdapter);
+                mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
 
 
 

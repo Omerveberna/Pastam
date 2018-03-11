@@ -6,16 +6,16 @@ package com.example.omerveberna.pastam;
 
 public class Pastalar {
     private String icerik;
-    private String kisiSayisi;
+    private String kisi;
     private String fiyat;
 
 
     public Pastalar(){
     }
 
-    public Pastalar(String icerik, String kisiSayisi, String fiyat) {
+    public Pastalar(String icerik, String kisi, String fiyat) {
         this.icerik = icerik;
-        this.kisiSayisi = kisiSayisi;
+        this.kisi = kisi;
         this.fiyat = fiyat;
 
     }
@@ -28,12 +28,12 @@ public class Pastalar {
         this.icerik = icerik;
     }
 
-    public String getKisiSayisi() {
-        return kisiSayisi;
+    public String getkisi() {
+        return kisi;
     }
 
-    public void setKisiSayisi(String weight) {
-        this.kisiSayisi = weight;
+    public void setkisi(String weight) {
+        this.kisi = weight;
     }
 
     public String getFiyat() {
