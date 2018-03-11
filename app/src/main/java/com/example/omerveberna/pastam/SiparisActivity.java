@@ -19,6 +19,8 @@ public class SiparisActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        DatabaseReference ddRef= FirebaseDatabase.getInstance().getReference().child("Kullanıcılar");
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_siparis);
 
