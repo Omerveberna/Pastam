@@ -24,7 +24,7 @@ public class SiparisActivity extends AppCompatActivity {
 
         text = (TextView) findViewById(R.id.text);
 
-        final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        final FirebaseUser fUser = FirebaseAuth.getInstance().getCurrentUser();
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("users/"+FirebaseAuth.getInstance().getCurrentUser().getUid());
 
         databaseReference.addValueEventListener(new ValueEventListener() {
